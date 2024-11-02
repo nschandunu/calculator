@@ -7,6 +7,71 @@ let previousInput = null;
 let operation = null;
 let shouldResetScreen = false;
 
+let isDragging = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+let xOffset = 0;
+let yOffset = 0;
+
+const phone = document.querySelector('.phone');
+const dynamicIsland = document.querySelector('.dynamic-island');
+
+// Only add drag functionality to dynamic island
+dynamicIsland.addEventListener('mousedown', dragStart);
+document.addEventListener('mousemove', drag);
+document.addEventListener('mouseup', dragEnd);
+
+function dragStart(e) {
+    initialX = e.clientX - xOffset;
+    initialY = e.clientY - yOffset;
+    
+    if (e.target === dynamicIsland) {
+        isDragging = true;
+        dynamicIsland.style.cursor = 'grabbing';
+        
+        // Remove transition during drag for instant response
+        phone.style.transition = 'none';
+    }
+}
+
+function drag(e) {
+    if (isDragging) {
+        e.preventDefault();
+        
+        currentX = e.clientX - initialX;
+        currentY = e.clientY - initialY;
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        // Use transform with translate3d for better performance
+        setTranslate(currentX, currentY, phone);
+    }
+}
+
+function dragEnd(e) {
+    initialX = currentX;
+    initialY = currentY;
+    isDragging = false;
+    dynamicIsland.style.cursor = 'grab';
+    
+    // Add smooth transition when dropping
+    phone.style.transition = 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)';
+}
+
+function setTranslate(xPos, yPos, el) {
+    // Use translate3d for hardware acceleration
+    el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+}
+
+// Add some basic styles
+phone.style.position = 'absolute';
+phone.style.userSelect = 'none';
+phone.style.willChange = 'transform'; // Optimize for animations
+dynamicIsland.style.cursor = 'grab';
+
 // Add click event listener to all buttons
 document.addEventListener('DOMContentLoaded', () => {
     // Add click handlers for all buttons
