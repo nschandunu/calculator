@@ -7,17 +7,19 @@
 }
 
 body {
-    background: #f0f0f0;
+    background: #000;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .phone {
     width: 395px;
     height: 837px;
-    background: #000;
+    background: #000000;
     border-radius: 55px;
     position: relative;
     padding: 15px;
@@ -30,6 +32,7 @@ body {
     will-change: transform;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    z-index: 1;
 }
 
 .dynamic-island {
@@ -103,7 +106,7 @@ body {
 }
 
 .screen {
-    background: #000;
+    background-color: #000000;
     height: 100%;
     border-radius: 45px;
     overflow: hidden;
@@ -112,6 +115,7 @@ body {
     flex-direction: column;
     padding: 0;
     padding-bottom: 15px;
+    z-index: 2;
 }
 
 .status-bar {
@@ -204,6 +208,7 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     padding-bottom: 10px;
+    background: #000000;
 }
 
 .display {
@@ -220,6 +225,7 @@ body {
     text-overflow: ellipsis;
     width: 340px;
     max-width: 340px;
+    background: #000000;
 }
 
 .buttons {
@@ -373,4 +379,28 @@ body {
 
 .dynamic-island:active {
     cursor: grabbing;
+}
+
+/* Add this new section for stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }

@@ -159,6 +159,32 @@ function calculate() {
     currentInput = result.toString();
     operation = null;
 }
+function createStars() {
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'stars';
+    document.body.appendChild(starsContainer);
+
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Random position
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // Random size (0.5px to 2px)
+        const size = 0.5 + Math.random() * 1.5;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // Random animation duration (1s to 5s)
+        star.style.setProperty('--duration', `${1 + Math.random() * 4}s`);
+        
+        starsContainer.appendChild(star);
+    }
+}
+
+createStars();
 
 // Update display
 function updateDisplay() {
