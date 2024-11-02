@@ -109,16 +109,86 @@ body {
 }
 
 .status-bar {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 45px 25px 0;
+    align-items: flex-start;
+    padding: 12px 22px;
     color: white;
-    font-size: 14px;
+    z-index: 3;
 }
 
-.icons {
+.time {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0.3px;
+    padding-top: 10px;
+}
+
+.status-icons {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 4px;
+    padding-top: 10px;
+}
+
+.signal {
+    display: flex;
+    gap: 1px;
+    align-items: flex-end;
+    height: 12px;
+}
+
+.signal-bar {
+    width: 2px;
+    background: white;
+    border-radius: 1px;
+}
+
+.signal-bar:nth-child(1) { height: 4px; }
+.signal-bar:nth-child(2) { height: 6px; }
+.signal-bar:nth-child(3) { height: 8px; }
+.signal-bar:nth-child(4) { height: 10px; }
+.signal-bar:nth-child(5) { height: 12px; }
+
+.wifi {
+    font-size: 12px;
+    transform: translateY(1px);
+}
+
+.battery {
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+}
+
+.battery-icon {
+    width: 22px;
+    height: 11px;
+    border: 1.5px solid white;
+    border-radius: 2.5px;
+    padding: 1px;
+    position: relative;
+}
+
+.battery-icon::after {
+    content: '';
+    width: 1.5px;
+    height: 3.5px;
+    background: white;
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0 1px 1px 0;
+}
+
+.battery-level {
+    height: 100%;
+    width: 90%; /* Adjust based on battery level */
+    background: white;
+    border-radius: 1px;
 }
 
 .calculator {
@@ -258,4 +328,26 @@ body {
 .navigation-bar:active {
     transform: translateX(-50%) scale(0.95);
     opacity: 0.6;
+}
+
+/* Adjust icon sizes */
+.signal i {
+    font-size: 14px;
+}
+
+.wifi i {
+    font-size: 16px;
+}
+
+.battery {
+    background: white;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 20px;
+    height: 22px;
+}
+
+.battery span {
+    font-size: 12px;
+    font-weight: 600;
 }
