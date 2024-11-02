@@ -1,7 +1,7 @@
 # Calculator
 A modern, interactive calculator with a sleek interface, featuring a draggable design and an animated starry background.
 
-<img width="1512" alt="Pasted Graphic" src="https://github.com/user-attachments/assets/393a49d5-198a-4b79-a4d0-12af2dd9dde9">
+<img width="988" alt="image" src="https://github.com/user-attachments/assets/f3c07e98-ec83-4ee9-b9d7-d32dd0ff259d">
 
 
 ## 🌟 Features
