@@ -15,8 +15,8 @@ body {
 }
 
 .phone {
-    width: 360px;
-    height: 780px;
+    width: 395px;
+    height: 847px;
     background: #000;
     border-radius: 55px;
     position: relative;
@@ -47,6 +47,8 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    padding: 0;
+    padding-bottom: 15px;
 }
 
 .status-bar {
@@ -64,32 +66,35 @@ body {
 
 .calculator {
     height: calc(100% - 90px);
-    padding: 0 15px;
+    padding: 0;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 10px;
 }
 
 .display {
     color: white;
     text-align: right;
-    font-size: 80px;
-    margin-top: auto;
-    margin-bottom: 10px;
-    padding: 0;
-    padding-right: 10px;
+    font-size: 85px;
+    margin: 0 auto 20px auto;
+    padding-right: 24px;
     min-height: 120px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 340px;
+    max-width: 360px;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin: 0 5px;
+    gap: 12px;
+    width: 340px;
+    margin: 0 auto;
 }
 
 .btn {
@@ -98,8 +103,10 @@ body {
     aspect-ratio: 1;
     position: relative;
     cursor: pointer;
-    font-size: 32px;
+    font-size: 36px;
     transition: filter 0.2s;
+    width: 75px;
+    height: 75px;
 }
 
 .btn:active {
@@ -124,6 +131,7 @@ body {
 
 .btn.function {
     background: #a5a5a5;
+    font-size: 34px;
 }
 
 .btn.function span {
@@ -144,7 +152,7 @@ body {
 
 .btn.calculator-btn i {
     color: #ffffff;
-    font-size: 36px;
+    font-size: 42px;
 }
 
 /* Phone Hardware Buttons */
@@ -176,8 +184,21 @@ body {
     background: #ffffff;
     border-radius: 3px;
     position: absolute;
-    bottom: 5px;
+    bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0.3;
-} 
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navigation-bar:hover {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.navigation-bar:active {
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0.6;
+}
