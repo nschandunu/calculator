@@ -15,8 +15,8 @@ body {
 }
 
 .phone {
-    width: 375px;
-    height: 812px;
+    width: 360px;
+    height: 780px;
     background: #000;
     border-radius: 55px;
     position: relative;
@@ -45,6 +45,8 @@ body {
     border-radius: 45px;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .status-bar {
@@ -62,7 +64,7 @@ body {
 
 .calculator {
     height: calc(100% - 90px);
-    padding: 20px;
+    padding: 0 15px;
     display: flex;
     flex-direction: column;
 }
@@ -71,8 +73,14 @@ body {
     color: white;
     text-align: right;
     font-size: 80px;
-    margin-bottom: auto;
-    padding: 0 20px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    padding: 0;
+    padding-right: 10px;
+    min-height: 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -80,7 +88,8 @@ body {
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 8px;
+    margin: 0 5px;
 }
 
 .btn {
@@ -123,7 +132,19 @@ body {
 
 .btn.calculator-btn {
     background: #333333;
-    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn.calculator-btn span {
+    position: static;
+    transform: none;
+}
+
+.btn.calculator-btn i {
+    color: #ffffff;
+    font-size: 36px;
 }
 
 /* Phone Hardware Buttons */
@@ -147,4 +168,16 @@ body {
     height: 150px;
     background: #2a2a2a;
     border-radius: 0 3px 3px 0;
+}
+
+.navigation-bar {
+    width: 140px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.3;
 } 
