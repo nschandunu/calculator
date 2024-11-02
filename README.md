@@ -1,6 +1,8 @@
 # Calculator
 A modern, interactive calculator with a sleek interface, featuring a draggable design and an animated starry background.
-![Calculator](#) <!-- You would need to add this preview gif -->
+
+<img width="1512" alt="Pasted Graphic" src="https://github.com/user-attachments/assets/393a49d5-198a-4b79-a4d0-12af2dd9dde9">
+
 
 ## 🌟 Features
 - Fully functional calculator operations
@@ -31,7 +33,7 @@ A modern, interactive calculator with a sleek interface, featuring a draggable d
 - Realistic button press effects
 
 ## 🚀 Live Demo
-[View Live Demo](#)
+[View Live Demo](https://nsc-calculator.netlify.app)
 
 ## 💻 Local Development
 1. Clone the repository:
