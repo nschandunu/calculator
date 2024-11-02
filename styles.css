@@ -7,17 +7,19 @@
 }
 
 body {
-    background: #f0f0f0;
+    background: #000;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .phone {
     width: 395px;
-    height: 847px;
-    background: #000;
+    height: 837px;
+    background: #000000;
     border-radius: 55px;
     position: relative;
     padding: 15px;
@@ -25,6 +27,12 @@ body {
         0 50px 100px rgba(0, 0, 0, 0.25),
         inset 0 0 0 2px #2a2a2a,
         inset 0 0 0 7px #000;
+    transition: none;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    z-index: 1;
 }
 
 .dynamic-island {
@@ -37,10 +45,68 @@ body {
     background: #000;
     border-radius: 20px;
     z-index: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Glow effect container */
+.dynamic-island::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(90deg, 
+        #ff0000, #ff7300, #00ff00, #0073ff, #ff0000);
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-size: 200% 200%;
+    animation: glow 3s linear infinite;
+}
+
+/* Hover effects */
+.dynamic-island:hover {
+    transform: translateX(-50%) scale(1.02);
+    background: #1a1a1a;
+    cursor: grab;
+}
+
+.dynamic-island:hover::before {
+    opacity: 0.15;
+}
+
+/* Subtle pulse animation */
+@keyframes glow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* Optional: Add inner shadow for depth */
+.dynamic-island::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.1) 0%, 
+        rgba(255,255,255,0) 100%);
+    border-radius: 20px;
+    opacity: 0.1;
 }
 
 .screen {
-    background: #000;
+    background-color: #000000;
     height: 100%;
     border-radius: 45px;
     overflow: hidden;
@@ -49,19 +115,90 @@ body {
     flex-direction: column;
     padding: 0;
     padding-bottom: 15px;
+    z-index: 2;
 }
 
 .status-bar {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 45px 25px 0;
+    align-items: flex-start;
+    padding: 12px 22px;
     color: white;
-    font-size: 14px;
+    z-index: 3;
 }
 
-.icons {
+.time {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0.3px;
+    padding-top: 10px;
+}
+
+.status-icons {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 6px;
+    padding-top: 10px;
+}
+
+.signal {
+    display: flex;
+    gap: 1px;
+    align-items: flex-end;
+    height: 12px;
+}
+
+.signal-bar {
+    width: 2px;
+    background: white;
+    border-radius: 1px;
+}
+
+.signal-bar:nth-child(1) { height: 4px; }
+.signal-bar:nth-child(2) { height: 6px; }
+.signal-bar:nth-child(3) { height: 8px; }
+.signal-bar:nth-child(4) { height: 10px; }
+.signal-bar:nth-child(5) { height: 12px; }
+
+.wifi {
+    font-size: 12px;
+    transform: translateY(1px);
+}
+
+.battery {
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+}
+
+.battery-icon {
+    width: 22px;
+    height: 11px;
+    border: 1.5px solid white;
+    border-radius: 2.5px;
+    padding: 1px;
+    position: relative;
+}
+
+.battery-icon::after {
+    content: '';
+    width: 1.5px;
+    height: 3.5px;
+    background: white;
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0 1px 1px 0;
+}
+
+.battery-level {
+    height: 100%;
+    width: 90%; /* Adjust based on battery level */
+    background: white;
+    border-radius: 1px;
 }
 
 .calculator {
@@ -71,6 +208,7 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     padding-bottom: 10px;
+    background: #000000;
 }
 
 .display {
@@ -87,6 +225,7 @@ body {
     text-overflow: ellipsis;
     width: 340px;
     max-width: 340px;
+    background: #000000;
 }
 
 .buttons {
@@ -201,4 +340,67 @@ body {
 .navigation-bar:active {
     transform: translateX(-50%) scale(0.95);
     opacity: 0.6;
+}
+
+/* Adjust icon sizes */
+.signal i, 
+.wifi i, 
+.battery i {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.battery {
+    background: white;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 20px;
+    height: 22px;
+}
+
+.battery span {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Optional: fine-tune individual icon sizes if needed */
+.signal i {
+    font-size: 12px;
+}
+
+.wifi i {
+    font-size: 13px;
+}
+
+.battery i {
+    font-size: 14px;
+    transform: rotate(90deg);
+}
+
+.dynamic-island:active {
+    cursor: grabbing;
+}
+
+/* Add this new section for stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
