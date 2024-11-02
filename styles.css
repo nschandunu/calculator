@@ -129,7 +129,7 @@ body {
 .status-icons {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     padding-top: 10px;
 }
 
@@ -331,12 +331,11 @@ body {
 }
 
 /* Adjust icon sizes */
-.signal i {
-    font-size: 14px;
-}
-
-.wifi i {
-    font-size: 16px;
+.signal i, 
+.wifi i, 
+.battery i {
+    color: #ffffff;
+    font-size: 13px;
 }
 
 .battery {
@@ -350,4 +349,18 @@ body {
 .battery span {
     font-size: 12px;
     font-weight: 600;
+}
+
+/* Optional: fine-tune individual icon sizes if needed */
+.signal i {
+    font-size: 12px;
+}
+
+.wifi i {
+    font-size: 13px;
+}
+
+.battery i {
+    font-size: 14px;
+    transform: rotate(90deg);
 }
