@@ -15,8 +15,8 @@ body {
 }
 
 .phone {
-    width: 375px;
-    height: 812px;
+    width: 395px;
+    height: 847px;
     background: #000;
     border-radius: 55px;
     position: relative;
@@ -45,6 +45,10 @@ body {
     border-radius: 45px;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-bottom: 15px;
 }
 
 .status-bar {
@@ -62,25 +66,35 @@ body {
 
 .calculator {
     height: calc(100% - 90px);
-    padding: 20px;
+    padding: 0;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 10px;
 }
 
 .display {
     color: white;
     text-align: right;
-    font-size: 80px;
-    margin-bottom: auto;
-    padding: 0 20px;
+    font-size: 70px;
+    margin: 0 auto 10px auto;
+    padding-right: 1px;
+    min-height: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 340px;
+    max-width: 340px;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 8px;
+    width: 340px;
+    margin: 0 auto;
 }
 
 .btn {
@@ -89,8 +103,10 @@ body {
     aspect-ratio: 1;
     position: relative;
     cursor: pointer;
-    font-size: 32px;
+    font-size: 38px;
     transition: filter 0.2s;
+    width: 78px;
+    height: 78px;
 }
 
 .btn:active {
@@ -115,6 +131,7 @@ body {
 
 .btn.function {
     background: #a5a5a5;
+    font-size: 34px;
 }
 
 .btn.function span {
@@ -123,7 +140,19 @@ body {
 
 .btn.calculator-btn {
     background: #333333;
-    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn.calculator-btn span {
+    position: static;
+    transform: none;
+}
+
+.btn.calculator-btn i {
+    color: #ffffff;
+    font-size: 30px;
 }
 
 /* Phone Hardware Buttons */
@@ -147,4 +176,29 @@ body {
     height: 150px;
     background: #2a2a2a;
     border-radius: 0 3px 3px 0;
-} 
+}
+
+.navigation-bar {
+    width: 140px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navigation-bar:hover {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.navigation-bar:active {
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0.6;
+}
